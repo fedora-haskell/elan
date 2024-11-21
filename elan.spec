@@ -3,12 +3,13 @@
 
 Name:           elan
 Version:        3.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Lean4 version manager
 
 License:        Apache-2.0
 URL:            https://github.com/leanprover/elan
 Source0:        https://github.com/leanprover/elan/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        elan-symlink-system-lean.sh
 
 BuildRequires:  cargo
 BuildRequires:  openssl-devel
@@ -38,6 +39,9 @@ rm %{buildroot}%{_prefix}/.crates*
 
 ln -s elan-init %{buildroot}%{_bindir}/elan
 
+install %{SOURCE1} %{buildroot}%{_bindir}/elan-symlink-system-lean
+
+
 %check
 %{buildroot}%{_bindir}/elan --version | grep %{version}
 
@@ -46,8 +50,12 @@ ln -s elan-init %{buildroot}%{_bindir}/elan
 %license LICENSE
 %{_bindir}/elan
 %{_bindir}/elan-init
+%{_bindir}/elan-symlink-system-lean
 
 
 %changelog
+* Thu Nov 21 2024 Jens Petersen <petersen@redhat.com> - 3.1.1-2
+- add elan-symlink-system-lean script
+
 * Sun Jul 14 2024 Jens Petersen <petersen@redhat.com> - 3.1.1-1
 - initial copr package
