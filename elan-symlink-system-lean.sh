@@ -9,3 +9,4 @@ for i in $(find ~/.elan/toolchains/ -maxdepth 1 -type l ); do
 done
 
 elan toolchain link $VERSION /usr/lib64/lean4
+elan default $VERSION
