@@ -2,8 +2,8 @@
 %define debug_package %{nil}
 
 Name:           elan
-Version:        3.1.1
-Release:        2%{?dist}
+Version:        4.0.0
+Release:        1%{?dist}
 Summary:        Lean4 version manager
 
 License:        Apache-2.0
@@ -54,6 +54,9 @@ install %{SOURCE1} %{buildroot}%{_bindir}/elan-symlink-system-lean
 
 
 %changelog
+* Mon Mar 03 2025 Jens Petersen  <petersen@redhat.com> - 4.0.0-1
+- https://github.com/leanprover/elan/blob/v4.0.0/CHANGELOG.md
+
 * Thu Nov 21 2024 Jens Petersen <petersen@redhat.com> - 3.1.1-2
 - add elan-symlink-system-lean script
 
