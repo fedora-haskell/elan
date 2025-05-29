@@ -2,7 +2,7 @@
 %define debug_package %{nil}
 
 Name:           elan
-Version:        4.0.0
+Version:        4.1.2
 Release:        1%{?dist}
 Summary:        Lean4 version manager
 
@@ -29,6 +29,8 @@ of the elan executable.
 
 %prep
 %autosetup
+# https://github.com/leanprover/elan/issues/168
+sed -i -e 's/zip = "2.5.0"/zip = "3.0.0"/' Cargo.toml src/elan-dist/Cargo.toml
 
 %build
 
@@ -54,6 +56,9 @@ install %{SOURCE1} %{buildroot}%{_bindir}/elan-symlink-system-lean
 
 
 %changelog
+* Thu May 29 2025 Jens Petersen <petersen@redhat.com> - 4.1.2-1
+- https://github.com/leanprover/elan/blob/v4.1.2/CHANGELOG.md
+
 * Mon Mar 03 2025 Jens Petersen  <petersen@redhat.com> - 4.0.0-1
 - https://github.com/leanprover/elan/blob/v4.0.0/CHANGELOG.md
 - elan-symlink-system-lean: default to system toolchain version
